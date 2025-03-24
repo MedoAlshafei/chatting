@@ -1,3 +1,4 @@
+// import 'package:bmprogresshud/progresshud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class SigninView extends StatefulWidget {
 class _SigninViewState extends State<SigninView> {
   final _auth = FirebaseAuth.instance;
   late String email, password;
+  // final GlobalKey<ProgressHudState> _hudKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,8 @@ class _SigninViewState extends State<SigninView> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
+        // child: ProgressHud(
+        //   key: _hudKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -58,6 +62,8 @@ class _SigninViewState extends State<SigninView> {
               color: kDarkOrange,
               title: 'Sign in',
               onPressed: () async {
+                // _showLoadingHud(context);
+
                 try {
                   final user = await _auth.signInWithEmailAndPassword(
                     email: email,
@@ -74,6 +80,13 @@ class _SigninViewState extends State<SigninView> {
           ],
         ),
       ),
+      // ),
     );
   }
+
+  // _showLoadingHud(BuildContext context) async {
+  //   ProgressHud.of(context)?.show(ProgressHudType.loading, "loading...");
+  //   await Future.delayed(const Duration(seconds: 1));
+  //   _hudKey.currentState?.show(ProgressHudType.loading, "loading...");
+  // }
 }

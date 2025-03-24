@@ -44,7 +44,7 @@ class _ChatViewState extends State<ChatView> {
             const Icon(Icons.message_rounded, color: kTextLightColor, size: 32),
             const SizedBox(width: 16),
             const Text(
-              'MessageMe',
+              'Chatting',
               style: TextStyle(
                 color: kTextLightColor,
                 fontSize: 24,
@@ -59,6 +59,7 @@ class _ChatViewState extends State<ChatView> {
               _auth.signOut();
               Navigator.pop(context);
             },
+            tooltip: 'Sign out',
             icon: const Icon(Icons.close, color: kTextLightColor, size: 32),
           ),
         ],
